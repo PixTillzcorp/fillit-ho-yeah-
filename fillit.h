@@ -19,6 +19,8 @@
 # include <fctnl.h>
 # include <unistd.h>
 
+# define BUF_SIZE 1024
+
 typedef	struct		s_slot
 {
 	int				x;
