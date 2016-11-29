@@ -30,10 +30,33 @@ typedef	struct		s_slot
 
 typedef	struct		s_tetri
 {
-	t_slot case1;
-	t_slot case2;
-	t_slot case3;
-	t_slot case4;
+	t_slot			case1;
+	t_slot			case2;
+	t_slot			case3;
+	t_slot			case4;
 }					t_tetri;
+
+enum 				e_tetriminos
+{
+	square = 1,
+	t_up,
+	t_right,
+	t_down,
+	t_left = 5,
+	stick_high,
+	stick_low,
+	z_low,
+	z_high,
+	five_low = 10,
+	five_high,
+	l_down,
+	l_right,
+	l_up,
+	l_left = 15,
+	revl_down,
+	revl_right,
+	revl_up,
+	revl_left
+};
 
 #endif
