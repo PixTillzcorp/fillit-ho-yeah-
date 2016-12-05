@@ -13,10 +13,8 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <sys/strat.h>
-# include <sys/types.h>
 # include <stdlib.h>
-# include <fctnl.h>
+# include <fcntl.h>
 # include <unistd.h>
 
 # define BUF_SIZE 1024

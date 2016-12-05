@@ -18,7 +18,7 @@ NAME = fillit
 
 CC = gcc
 
-SRC = fillit.c
+SRC = fillit.c ../libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -28,7 +28,7 @@ $(NAME): $(SRC)
 	$(CC) -o $(NAME) $(SRC)
 
 clean:
-	rm -f $(SRCO)
+	rm -f a.out
 
 fclean: clean
 	rm -f $(NAME)
