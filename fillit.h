@@ -19,42 +19,22 @@
 
 # define BUF_SIZE 1024
 
-typedef	struct		s_slot
+typedef	struct			s_slot
 {
-	int				x;
-	int				y;
-	char			id;
-}					t_slot;
+	int					x;
+	int					y;
+	char				id;
+}						t_slot;
 
-typedef	struct		s_tetri
+typedef	struct			s_tetri
 {
-	t_slot			case1;
-	t_slot			case2;
-	t_slot			case3;
-	t_slot			case4;
-}					t_tetri;
+	t_slot				hash_base;
+	t_slot				hash_2;
+	t_slot				hash_3;
+	t_slot				hash_4;
+}						t_tetri;
 
-enum 				e_tetriminos
-{
-	square = 1,
-	t_up,
-	t_right,
-	t_down,
-	t_left = 5,
-	stick_high,
-	stick_low,
-	z_low,
-	z_high,
-	five_low = 10,
-	five_high,
-	l_down,
-	l_right,
-	l_up,
-	l_left = 15,
-	revl_down,
-	revl_right,
-	revl_up,
-	revl_left
-};
+int						chk_vld_tetri(char *buf, int end_chk, int index);
+int						chk_vld_file(char ***pieces, char *file, int fd);
 
 #endif
