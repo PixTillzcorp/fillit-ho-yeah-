@@ -66,7 +66,12 @@ int		cmp_x_y(t_list *lst1, t_list *lst2, t_list **save_lst2, int check)
 	return (0);
 }
 
-t_list	**recup_vld_coord(t_list **baseshape)
+t_list	**lst_from_split(t_list **lst, char **splited_buf)
+{
+	
+}
+
+t_list	**recup_coord(t_list **baseshape, char *file)
 {
 	t_dblbll	index;
 	t_list		**save;
@@ -75,43 +80,15 @@ t_list	**recup_vld_coord(t_list **baseshape)
 
 	index.i = 0;
 	index.j = 0;
-	nbr_hash = 0;
 	save = baseshape;
-	splited_buf = open_n_split(splited_buf, "extern_file.txt");
-	while (splited_buf[index.i])
-	{
-		while (splited_buf[index.i][index.j])
-		{
-			if (splited_buf[index.i][index.j] = '#')
-				*baseshape = set_x_y(*baseshape, nbr_hash, index.j, index.i);
-			index.j++;
-		}
-		*baseshape = (**baseshape).next;
-		index.j = 0;
-		index.i++;
-	}
-	return (save);
-}
-
-t_list	**recup_coord(t_list **baseshape, char **splited_buf, char *file)
-{
-	t_dblbll	index;
-	t_list		**save;
-	int			nbr_hash;
-
-	index.i = 0;
-	index.j = 0;
-	save = baseshape;
+	splited_buf = open_n_split(splited_buf, file);
 	while (splited_buf[index.i])
 	{
 		nbr_hash = 0;
 		while (splited_buf[index.i][index.j])
 		{
 			if (splited_buf[index.i][index.j] = '#')
-			{
-				*baseshape = set_x_y(*baseshape, nbr_hash, index.j, index.i);
-				nbr_hash++;
-			}
+				*baseshape = set_x_y(*baseshape, nbr_hash++, index.j, index.i);
 			index.j++;
 		}
 		*baseshape = (**baseshape).next;
@@ -120,36 +97,6 @@ t_list	**recup_coord(t_list **baseshape, char **splited_buf, char *file)
 	}
 	return (save);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
