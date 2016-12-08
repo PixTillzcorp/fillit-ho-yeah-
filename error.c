@@ -16,7 +16,7 @@ int		chk_input_arg(char ***pieces, char *file, int argc)
 {
 	int fd;
 
-	fd = 0;
+	fd = 2;
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fillit \"source_file.txt\"\n");

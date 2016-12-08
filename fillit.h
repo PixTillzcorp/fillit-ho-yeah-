@@ -50,5 +50,6 @@ t_list					**recup_coord(t_list **baseshape, char *file);
 t_list					**recup_vld_coord(t_list **baseshape);
 int						cmp_x_y(t_list *lst1, t_list *lst2, t_list **save_lst2, int check);
 t_list					*set_x_y(t_list *lst, int hash, int x, int y);
+void					display_grid(char **grid);
 
 #endif

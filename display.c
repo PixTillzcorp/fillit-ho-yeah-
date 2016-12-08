@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 11:26:01 by heinfalt          #+#    #+#             */
-/*   Updated: 2016/11/29 11:26:02 by heinfalt         ###   ########.fr       */
+/*   Created: 2016/12/08 15:24:34 by heinfalt          #+#    #+#             */
+/*   Updated: 2016/12/08 15:24:36 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int				main(int argc, char **argv)
+void	display_grid(char **grid)
 {
-	char		**pieces;
+	int	i;
 
-	pieces = NULL;
-	if (!chk_input_arg(&pieces, argv[1], argc))
-		exit(1);
-	display_grid(pieces);
-	return (0);
+	i = 0;
+	while (grid[i])
+	{
+		ft_putstr(grid[i++]);
+		ft_putchar('\n');
+	}
 }
-

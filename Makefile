@@ -18,7 +18,7 @@ NAME = fillit
 
 CC = gcc
 
-SRC = fillit.c ../libft/libft.a error.c checking.c
+SRC = fillit.c ../libft/libft.a error.c checking.c display.c
 
 CFLAGS = -Wall -Wextra -Werror
 
