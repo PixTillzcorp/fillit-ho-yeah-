@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 11:26:01 by heinfalt          #+#    #+#             */
-/*   Updated: 2016/11/29 11:26:02 by heinfalt         ###   ########.fr       */
+/*   Created: 2016/12/08 14:25:41 by heinfalt          #+#    #+#             */
+/*   Updated: 2016/12/08 14:25:42 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int				main(int argc, char **argv)
+int		chk_input_arg(char ***pieces, char *file, int argc)
 {
-	int			i;
-	char		**pieces;
+	int fd;
 
-	i = 0;
-	pieces = NULL;
-	if (!chk_input_arg(&pieces, argv[1], argc))
-		exit(1);
-	while (pieces[i])
+	fd = 0;
+	if (argc != 2)
 	{
-		ft_putstr(pieces[i++]);
-		ft_putchar('\n');
-		if (i % 4 == 0)
-			ft_putchar('\n');
+		ft_putstr("usage: ./fillit \"source_file.txt\"\n");
+		return (0);
 	}
-	return (0);
+	if (!chk_vld_file(pieces, file, fd))
+	{
+		ft_putstr_fd("open()/close() failed or the file is not correct.\n", fd);
+		return (0);
+	}
+	
+	return (1);
 }
-
