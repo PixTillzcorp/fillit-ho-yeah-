@@ -19,7 +19,10 @@ int				main(int argc, char **argv)
 	pieces = NULL;
 	if (!chk_input_arg(&pieces, argv[1], argc))
 		exit(1);
+	// creation des listes chainees
+	// recuperation des coordonnes dans les listes
+	// comparaison coordonnees fichier input avec coord fichier base
+	// backtracking
 	display_grid(pieces);
 	return (0);
 }
-
