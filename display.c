@@ -23,3 +23,13 @@ void	display_grid(char **grid)
 		ft_putchar('\n');
 	}
 }
+
+int		nbr_tetri(char **splited_buf)
+{
+	int nbr;
+
+	nbr = 0;
+	while (splited_buf[nbr])
+		nbr++;
+	return ((nbr - 1) / 4);
+}

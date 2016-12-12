@@ -66,9 +66,21 @@ int		cmp_x_y(t_list *lst1, t_list *lst2, t_list **save_lst2, int check)
 	return (0);
 }
 
-t_list	**lst_from_split(t_list **lst, char **splited_buf)
+t_list	**lst_from_split(char **splited_buf)
 {
-	
+	t_list	**save;
+	t_list	*nlst;
+	int		len;
+
+	len = nbr_tetri(splited_buf);
+	nlst = (t_list **)ft_memalloc(sizeof(t_list *) * (len + 1));
+	save = &nlst;
+	while (nlst->next != NULL)
+	{
+		nlst = ft_lstappend(nlst, ft_lstnew(NULL, 0));
+		nlst = nlst->next;
+	}
+	return (save);
 }
 
 t_list	**recup_coord(t_list **baseshape, char *file)
