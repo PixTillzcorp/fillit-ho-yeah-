@@ -1,4 +1,4 @@
-# **************************************************************************** #
+# **************************************************************************** # 
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -18,7 +18,15 @@ NAME = fillit
 
 CC = gcc
 
-SRC = fillit.c ../libft/libft.a error.c checking.c display.c
+SRC = 	fillit.c\
+		libft/libft.a\
+		checking.c\
+		read.c\
+		remove_endl.c\
+		index.c\
+		manip.c\
+		map.c\
+		error.c
 
 CFLAGS = -Wall -Wextra -Werror
 
