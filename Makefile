@@ -26,6 +26,7 @@ SRC = 	fillit.c\
 		index.c\
 		manip.c\
 		map.c\
+		display.c\
 		error.c
 
 CFLAGS = -Wall -Wextra -Werror
@@ -33,7 +34,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME) fillit.h
 
 $(NAME): $(SRC)
-	$(CC) -o $(NAME) $(SRC)
+	$(CC) $(CFLAGS) -o $(NAME) $(SRC)
 
 clean:
 	rm -f a.out

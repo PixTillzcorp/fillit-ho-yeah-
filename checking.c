@@ -15,7 +15,6 @@
 int		check_hash_dot(char *shape)
 {
 	int i;
-	int check;
 	int nbr_hash;
 	int nbr_dots;
 
@@ -92,6 +91,36 @@ int		check_shapes(char **input, char **base_shapes)
 		check++;
 	}
 	return (1);
+}
+
+int		check_insert(char *src, char *shape, char *map, int start)
+{
+	char *check;
+	int i;
+
+	i = 0;
+	src++;
+	src--;
+	check = init_map(ft_strlen(map));
+	while (shape[i] && map[start + i])
+	{
+		if (shape[i] == '#')
+		{
+			if (map[start + i] != '.')
+				return (0);
+			else if (map[start + i] == '.')
+				check[start + i] = shape[i];
+		}
+		if ((size_t)(start + ft_strlen(shape)) > ft_strlen(map))
+			return (0);
+		i++;
+	}
+	if (ft_strstr(side_inc(src), trunc_shape(side_inc(check))))
+	{
+		free(check);
+		return (1);
+	}
+	return (0);
 }
 
 void	check_arg_nbr(int argc)

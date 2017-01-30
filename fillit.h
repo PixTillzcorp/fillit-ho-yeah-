@@ -35,16 +35,17 @@ void				check_arg_nbr(int argc);
 int					check_hash_dot(char *src);
 int					check_clmn_line(char *src);
 int					check_shapes(char **input, char **base_shapes);
+int					check_insert(char *src, char *shape, char *map, int start);
 
 //map
 
 void				do_map(char **input);
-char				*init_map(char **input);
+char				*init_map(size_t size);
 char				**put_id(char **shapes);
 char				*remove_id(char *shape);
 char				*solve(char **input, char *map);
 char				*remove_shape(char *map, int piece);
-char				*insert_shape(char *shape, char *map, int start);
+char				*insert_shape(char *shape, char *map, int start, int piece);
 
 //index
 
@@ -59,5 +60,9 @@ char				*trunc_shape(char *shape);
 char				**ft_arraydup(char **src);
 char				**trunc_array(char **array);
 char				**side_inc_array(char **src);
+
+//display
+
+void				display_map(char *map);
 
 #endif

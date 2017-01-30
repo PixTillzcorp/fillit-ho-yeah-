@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/21 12:18:46 by heinfalt          #+#    #+#             */
-/*   Updated: 2016/12/21 12:18:50 by heinfalt         ###   ########.fr       */
+/*   Created: 2017/01/30 13:03:58 by heinfalt          #+#    #+#             */
+/*   Updated: 2017/01/30 13:03:59 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+void	display_map(char *map)
 {
-	char **input;
-	char **base;
+	int count;
+	int side;
 	int i;
 
 	i = 0;
-	check_arg_nbr(argc);
-	input = ft_build(argv[1]);
-	base = ft_build("extern_file.txt");
-	check_shapes(ft_arraydup(input), ft_arraydup(base));
-	do_map(input);
-	exit(1);
+	count = 0;
+	side = get_side_shape(map);
+	while (map[i])
+	{
+		if (count == side)
+		{
+			ft_putchar('\n');
+			count = 0;
+		}
+		ft_putchar(map[i]);
+		i++;
+		count++;
+	}
 }
