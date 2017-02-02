@@ -32,4 +32,5 @@ void	display_map(char *map)
 		i++;
 		count++;
 	}
+	ft_putchar('\n');
 }

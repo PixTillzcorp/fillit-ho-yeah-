@@ -6,7 +6,7 @@
 /*   By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/21 12:19:17 by heinfalt          #+#    #+#             */
-/*   Updated: 2016/12/21 12:19:18 by heinfalt         ###   ########.fr       */
+/*   Updated: 2017/02/02 14:10:22 by heinfalt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,9 @@ int		ft_open(char *file)
 {
 	int fd;
 	
-	fd = open(file, O_RDONLY, S_IRUSR);
+	fd = open(file, O_RDONLY | O_CREAT, 0777);
 	if (fd == -1)
-	{
-		ft_putstr("open() failed for \"");
-		ft_putstr(file);
-		ft_putstr("\".\n");
-		exit(1);
-	}
+		ft_error();
 	return (fd);
 }
 
@@ -31,12 +26,7 @@ void	ft_close(int fd)
 {
 	fd = close(fd);
 	if (fd == -1)
-	{
-		ft_putstr("close() failed for fd");
-		ft_putnbr(fd);
-		ft_putstr(".\n");
-		exit(1);
-	}
+		ft_error();
 }
 
 char	**ft_build(char *file)

@@ -12,15 +12,17 @@
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	char **input;
-	char **base;
-	int i;
+	char	**input;
+	char	**base;
+	int		i;
 
 	i = 0;
 	check_arg_nbr(argc);
 	input = ft_build(argv[1]);
+	while (input[i])
+		check_hash_dot(input[i++]);
 	base = ft_build("extern_file.txt");
 	check_shapes(ft_arraydup(input), ft_arraydup(base));
 	do_map(input);
