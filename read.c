@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
@@ -12,29 +12,28 @@
 
 #include "fillit.h"
 
-int		ft_open(char *file)
+int			ft_open(char *file)
 {
-	int fd;
-	
+	int		fd;
+
 	fd = open(file, O_RDONLY | O_CREAT, 0777);
 	if (fd == -1)
 		ft_error();
 	return (fd);
 }
 
-void	ft_close(int fd)
+void		ft_close(int fd)
 {
 	fd = close(fd);
 	if (fd == -1)
 		ft_error();
 }
 
-char	**ft_build(char *file)
+char		**ft_build(char *file)
 {
-
-	char *buf;
-	int ret;
-	int fd;
+	char	*buf;
+	int		ret;
+	int		fd;
 
 	buf = (char *)ft_memalloc(sizeof(char) * BUFF_SIZE);
 	fd = ft_open(file);

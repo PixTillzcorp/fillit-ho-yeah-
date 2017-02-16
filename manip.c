@@ -12,9 +12,9 @@
 
 #include "fillit.h"
 
-char	**trunc_array(char **array)
+char		**trunc_array(char **array)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (!array)
@@ -27,10 +27,10 @@ char	**trunc_array(char **array)
 	return (array);
 }
 
-char	*trunc_shape(char *shape)
+char		*trunc_shape(char *shape)
 {
-	int start;
-	int end;
+	int		start;
+	int		end;
 
 	if (!shape)
 		return (NULL);
@@ -44,10 +44,10 @@ char	*trunc_shape(char *shape)
 	return (shape);
 }
 
-char	**ft_arraydup(char **src)
+char		**ft_arraydup(char **src)
 {
-	char **cpy;
-	int i;
+	char	**cpy;
+	int		i;
 
 	i = 0;
 	cpy = (char **)ft_memalloc(sizeof(char *) * get_nbr_shape(src) + 1);
@@ -64,8 +64,8 @@ char	**ft_arraydup(char **src)
 
 char		**side_inc_array(char **src)
 {
-	char **cpy;
-	int i;
+	char	**cpy;
+	int		i;
 
 	i = 0;
 	if (!src)
@@ -76,27 +76,26 @@ char		**side_inc_array(char **src)
 		cpy[i] = side_inc(cpy[i]);
 		i++;
 	}
+	cpy[i] = NULL;
 	return (cpy);
 }
 
-char	*side_inc(char *shape)
+char		*side_inc(char *shape)
 {
-	char *cpy;
-	int j;
-	int k;
-	int side;
-	int len;
+	char	*cpy;
+	int		j;
+	int		k;
+	int		side;
 
 	j = 0;
 	k = 0;
 	if (!shape)
 		ft_error();
 	side = get_side_shape(shape);
-	len = (int)((side * 2) + ft_strlen(shape) + 1);
-	cpy = (char *)ft_memalloc(sizeof(char) * len);
+	cpy = (char *)ft_memalloc(sizeof(char) * ((side * 2) + (side * side) + 2));
 	if (!cpy)
 		ft_free_error(cpy);
-	while (j < len)
+	while (j < (side * side) + 1)
 	{
 		if ((j + 1) % (side + 1) == 0 || !shape[k])
 			cpy[j++] = '.';
@@ -109,9 +108,9 @@ char	*side_inc(char *shape)
 
 char		**put_id(char **shapes)
 {
-	char id;
-	int i;
-	int j;
+	char	id;
+	int		i;
+	int		j;
 
 	id = 65;
 	i = 0;
@@ -133,7 +132,7 @@ char		**put_id(char **shapes)
 
 char		*remove_id(char *shape)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (!shape)

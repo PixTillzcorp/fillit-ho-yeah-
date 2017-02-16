@@ -14,17 +14,17 @@
 
 void		do_map(char **input)
 {
-	char *map;
+	char	*map;
 
 	map = init_map(ft_strlen(input[0]));
 	map = solve(input, map);
 	display_map(map);
 }
 
-char	*init_map(size_t size)
+char		*init_map(size_t size)
 {
-	char *map;
-	size_t i;
+	char	*map;
+	size_t	i;
 
 	i = 0;
 	map = (char *)ft_memalloc(sizeof(char) * (size + 1));
@@ -33,10 +33,11 @@ char	*init_map(size_t size)
 	map[i] = '\0';
 	return (map);
 }
-int		*init_start(size_t size)
+
+int			*init_start(size_t size)
 {
-	int *start;
-	int i;
+	int		*start;
+	int		i;
 
 	i = 0;
 	start = (int *)ft_memalloc(sizeof(int) * (size + 1));
@@ -45,10 +46,10 @@ int		*init_start(size_t size)
 	return (start);
 }
 
-char	*insert_shape(char *shape, char *map, int start, int piece)
+char		*insert_shape(char *shape, char *map, int start, int piece)
 {
-	int i;
-	
+	int		i;
+
 	i = 0;
 	if (!shape || !map)
 		return (NULL);
@@ -61,9 +62,9 @@ char	*insert_shape(char *shape, char *map, int start, int piece)
 	return (map);
 }
 
-char	*remove_shape(char *map, int piece)
+char		*remove_shape(char *map, int piece)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!map)
@@ -77,13 +78,15 @@ char	*remove_shape(char *map, int piece)
 	return (map);
 }
 
-char	*solve(char **input, char *map)
+char		*solve(char **input, char *map)
 {
-	char **dup;
-	int	*start;
-	int piece;
+	char	**dup;
+	int		*start;
+	int		piece;
+	int		i;
 
 	piece = 0;
+	i = 0;
 	dup = trunc_array(ft_arraydup(input));
 	start = init_start(get_nbr_shape(input));
 	while (piece != get_nbr_shape(input))

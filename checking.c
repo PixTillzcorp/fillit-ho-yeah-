@@ -30,7 +30,7 @@ int			check_hash_dot(char *shape)
 		nbr_hash += (shape[i] == '#' ? 1 : 0);
 		nbr_dots += (shape[i++] == '.' ? 1 : 0);
 	}
-	if (nbr_dots % 12 != 0 || nbr_hash % 4 != 0)
+	if (nbr_dots != 12 || nbr_hash != 4)
 		ft_error();
 	return (1);
 }
@@ -50,14 +50,12 @@ int			check_clmn_line(char *shape)
 		while (check_line != 4)
 		{
 			check_clmn = 0;
-			while (shape[i++]!= '\n')
+			while (shape[i++] != '\n')
 				check_clmn++;
-			if (check_clmn != 4)
-				return (0);
 			check_line++;
+			if (check_clmn != 4 && check_line != 4 && !shape[i + 1])
+				return (0);
 		}
-		if (shape[i] && shape[i] != '\n')
-			return (0);
 		i++;
 	}
 	return (1);
@@ -67,23 +65,22 @@ int			check_shapes(char **input, char **base_shapes)
 {
 	char	**cpy;
 	int		check;
-	int		i;
-	int		j;
+	int		tab[2];
 
- 	j = 0;
+	tab[1] = 0;
 	check = 0;
- 	cpy = side_inc_array(ft_arraydup(input));
- 	while (check != 2)
- 	{
- 		i = 0;
-		while (input[i])
+	cpy = side_inc_array(ft_arraydup(input));
+	while (check != 2)
+	{
+		tab[0] = 0;
+		while (input[tab[0]])
 		{
-			if (!base_shapes[j])
+			if (!base_shapes[tab[1]])
 				ft_error();
-			else if (ft_strstr(base_shapes[j++], trunc_shape(input[i])))
+			else if (ft_strstr(base_shapes[tab[1]++], trunc_shape(input[tab[0]])))
 			{
-				i++;
-				j = 0;
+				tab[0]++;
+				tab[1] = 0;
 			}
 		}
 		input = cpy;
@@ -99,8 +96,6 @@ int			check_insert(char *src, char *shape, char *map, int start)
 	int		i;
 
 	i = 0;
-	src++;
-	src--;
 	check = init_map(ft_strlen(map));
 	while (shape[i] && map[start + i])
 	{

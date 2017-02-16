@@ -18,16 +18,17 @@ NAME = fillit
 
 CC = gcc
 
-SRC = 	fillit.c\
-		libft/libft.a\
-		checking.c\
+SRC =	map.c\
 		read.c\
-		remove_endl.c\
 		index.c\
 		manip.c\
-		map.c\
+		error.c\
+		reduce.c\
+		fillit.c\
 		display.c\
-		error.c
+		checking.c\
+		remove_endl.c\
+		libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 

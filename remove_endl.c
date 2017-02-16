@@ -14,9 +14,9 @@
 
 static	char	*cpy_wout_endl(char *src, char *dest)
 {
-	int i;
-	int j;
-	int count;
+	int			i;
+	int			j;
+	int			count;
 
 	i = 0;
 	j = 0;
@@ -40,11 +40,11 @@ static	char	*cpy_wout_endl(char *src, char *dest)
 	return (dest);
 }
 
-char	*remove_endl(char *buf)
+char			*remove_endl(char *buf)
 {
-	char *ret;
-	int i;
-	int nbr_endl;
+	char		*ret;
+	int			i;
+	int			nbr_endl;
 
 	i = 0;
 	nbr_endl = 0;
