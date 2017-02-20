@@ -42,19 +42,17 @@ int			check_clmn_line(char *shape)
 	int		check_clmn;
 
 	i = 0;
-	if (!shape)
-		ft_error();
 	while (shape[i])
 	{
 		check_line = 0;
 		while (check_line != 4)
 		{
 			check_clmn = 0;
-			while (shape[i++] != '\n')
+			while (shape[i++] != '\n' && shape[i] != '\0')
 				check_clmn++;
+			if (check_clmn != 4)
+				ft_error();
 			check_line++;
-			if (check_clmn != 4 && check_line != 4 && !shape[i + 1])
-				return (0);
 		}
 		i++;
 	}
@@ -63,29 +61,28 @@ int			check_clmn_line(char *shape)
 
 int			check_shapes(char **input, char **base_shapes)
 {
-	char	**cpy;
+	int		i;
+	int		j;
 	int		check;
-	int		tab[2];
 
-	tab[1] = 0;
+	j = 0;
+	i = 0;
 	check = 0;
-	cpy = side_inc_array(ft_arraydup(input));
 	while (check != 2)
 	{
-		tab[0] = 0;
-		while (input[tab[0]])
+		while (input[i])
 		{
-			if (!base_shapes[tab[1]])
+			if (!base_shapes[j])
 				ft_error();
-			else if (ft_strstr(base_shapes[tab[1]++], trunc_shape(input[tab[0]])))
+			else if (ft_strstr(base_shapes[j++], trunc_shape(input[i])))
 			{
-				tab[0]++;
-				tab[1] = 0;
+				i++;
+				j = 0;
 			}
 		}
-		input = cpy;
-		base_shapes = side_inc_array(base_shapes);
 		check++;
+		input = side_inc_array(input);
+		base_shapes = side_inc_array(base_shapes);
 	}
 	return (1);
 }

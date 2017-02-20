@@ -51,8 +51,8 @@ char		**side_red(char **input, int *line, int *clmn)
 		j = 0;
 		k = 0;
 		side = get_side_shape(input[i]);
-		cpy[i] = (char *)ft_memalloc(sizeof(char) * ((side * side) + 1)\
-		- (side * 2));
+		cpy[i] = (char *)ft_memalloc(sizeof(char) * (side - 1)\
+		* (side - 1) + 1);
 		while (input[i][j])
 		{
 			if (j % side == clmn[i] - 1 || (j >= (side * (line[i] - 1)) &&\

@@ -25,7 +25,8 @@ int			main(int argc, char **argv)
 		check_hash_dot(input[i++]);
 	base = ft_build("extern_file.txt");
 	check_shapes(ft_arraydup(input), ft_arraydup(base));
-	input = reduce(input);
+	while (input != reduce(input))
+		input = reduce(input);
 	do_map(input);
 	exit(1);
 }

@@ -12,11 +12,11 @@
 
 #include "fillit.h"
 
-void	display_map(char *map)
+void		display_map(char *map)
 {
-	int count;
-	int side;
-	int i;
+	int		count;
+	int		side;
+	int		i;
 
 	i = 0;
 	count = 0;
@@ -33,4 +33,44 @@ void	display_map(char *map)
 		count++;
 	}
 	ft_putchar('\n');
+}
+
+char		**put_id(char **shapes)
+{
+	char	id;
+	int		i;
+	int		j;
+
+	id = 65;
+	i = 0;
+	if (!shapes)
+		return (NULL);
+	while (shapes[i])
+	{
+		j = 0;
+		while (shapes[i][j])
+		{
+			if (shapes[i][j] == '#')
+				shapes[i][j] = (char)(id + i);
+			j++;
+		}
+		i++;
+	}
+	return (shapes);
+}
+
+char		*remove_id(char *shape)
+{
+	int		i;
+
+	i = 0;
+	if (!shape)
+		return (NULL);
+	while (shape[i])
+	{
+		if (ft_isalpha(shape[i]))
+			shape[i] = '#';
+		i++;
+	}
+	return (shape);
 }

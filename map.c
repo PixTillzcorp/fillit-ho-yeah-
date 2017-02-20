@@ -17,7 +17,8 @@ void		do_map(char **input)
 	char	*map;
 
 	map = init_map(ft_strlen(input[0]));
-	map = solve(input, map);
+	map = solve(input, trunc_array(ft_arraydup(input)), map,\
+	init_start(get_nbr_shape(input)));
 	display_map(map);
 }
 
@@ -74,48 +75,6 @@ char		*remove_shape(char *map, int piece)
 		if (map[i] == (char)(65 + piece))
 			map[i] = '.';
 		i++;
-	}
-	return (map);
-}
-
-char		*solve(char **input, char *map)
-{
-	char	**dup;
-	int		*start;
-	int		piece;
-	int		i;
-
-	piece = 0;
-	i = 0;
-	dup = trunc_array(ft_arraydup(input));
-	start = init_start(get_nbr_shape(input));
-	while (piece != get_nbr_shape(input))
-	{
-		if (check_insert(input[piece], dup[piece], map, start[piece]))
-		{
-			map = insert_shape(dup[piece], map, start[piece], piece);
-			piece++;
-		}
-		else
-		{
-			start[piece]++;
-			if ((size_t)(start[piece] + ft_strlen(dup[piece])) > ft_strlen(map))
-			{
-				start[piece] = 0;
-				if (piece == 0)
-				{
-					map = side_inc(map);
-					input = side_inc_array(input);
-					dup = trunc_array(ft_arraydup(input));
-				}
-				else
-				{
-					piece--;
-					start[piece]++;
-					map = remove_shape(map, piece);
-				}
-			}
-		}
 	}
 	return (map);
 }

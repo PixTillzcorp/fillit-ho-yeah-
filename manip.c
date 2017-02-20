@@ -95,7 +95,7 @@ char		*side_inc(char *shape)
 	cpy = (char *)ft_memalloc(sizeof(char) * ((side * 2) + (side * side) + 2));
 	if (!cpy)
 		ft_free_error(cpy);
-	while (j < (side * side) + 1)
+	while (j < ((side * 2) + (side * side) + 1))
 	{
 		if ((j + 1) % (side + 1) == 0 || !shape[k])
 			cpy[j++] = '.';
@@ -104,44 +104,4 @@ char		*side_inc(char *shape)
 	}
 	cpy[j] = '\0';
 	return (cpy);
-}
-
-char		**put_id(char **shapes)
-{
-	char	id;
-	int		i;
-	int		j;
-
-	id = 65;
-	i = 0;
-	if (!shapes)
-		return (NULL);
-	while (shapes[i])
-	{
-		j = 0;
-		while (shapes[i][j])
-		{
-			if (shapes[i][j] == '#')
-				shapes[i][j] = (char)(id + i);
-			j++;
-		}
-		i++;
-	}
-	return (shapes);
-}
-
-char		*remove_id(char *shape)
-{
-	int		i;
-
-	i = 0;
-	if (!shape)
-		return (NULL);
-	while (shape[i])
-	{
-		if (ft_isalpha(shape[i]))
-			shape[i] = '#';
-		i++;
-	}
-	return (shape);
 }

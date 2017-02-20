@@ -42,8 +42,9 @@ void				do_map(char **input);
 char				*init_map(size_t size);
 char				**put_id(char **shapes);
 char				*remove_id(char *shape);
-char				*solve(char **input, char *map);
+int					*init_start(size_t size);
 char				*remove_shape(char *map, int piece);
+char				*solve(char **input, char **dup, char *map, int *start);
 char				*insert_shape(char *shape, char *map, int start, int piece);
 
 int					get_side_shape(char *shape);
