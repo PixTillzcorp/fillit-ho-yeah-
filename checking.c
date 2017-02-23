@@ -119,7 +119,7 @@ void		check_arg_nbr(int argc)
 {
 	if (argc != 2)
 	{
-		ft_putstr("usage: fillit input_file.txt\n");
+		ft_putstr("usage: fillit <source_file>\n");
 		exit(1);
 	}
 }
