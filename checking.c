@@ -93,7 +93,7 @@ int			check_insert(char *src, char *shape, char *map, int start)
 	int		i;
 
 	i = 0;
-	check = init_map(ft_strlen(map));
+	check = clear_map(ft_strlen(map));
 	while (shape[i] && map[start + i])
 	{
 		if (shape[i] == '#')
@@ -119,7 +119,7 @@ void		check_arg_nbr(int argc)
 {
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./a.out source_file.txt\n");
+		ft_putstr("usage: fillit input_file.txt\n");
 		exit(1);
 	}
 }

@@ -16,22 +16,29 @@ void		do_map(char **input)
 {
 	char	*map;
 
-	map = init_map(ft_strlen(input[0]));
+	map = init_map(&input, (size_t)(get_nbr_shape(input) * 4));
 	map = solve(input, trunc_array(ft_arraydup(input)), map,\
 	init_start(get_nbr_shape(input)));
 	display_map(map);
 }
 
-char		*init_map(size_t size)
+char		*init_map(char ***input, size_t nbr_hash)
 {
 	char	*map;
+	size_t	size;
 	size_t	i;
 
 	i = 0;
+	size = ft_strlen(*input[0]);
 	map = (char *)ft_memalloc(sizeof(char) * (size + 1));
 	while (i < size)
 		map[i++] = '.';
 	map[i] = '\0';
+	while (nbr_hash > ft_strlen(map))
+	{
+		map = side_inc(map);
+		*input = side_inc_array(*input);
+	}
 	return (map);
 }
 

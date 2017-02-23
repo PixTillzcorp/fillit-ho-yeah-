@@ -38,30 +38,28 @@ char		**reduce(char **input)
 
 char		**side_red(char **input, int *line, int *clmn)
 {
-	int		i;
-	int		j;
-	int		k;
+	int		tab[3];
 	int		side;
 	char	**cpy;
 
-	i = 0;
+	tab[0] = 0;
 	cpy = (char **)ft_memalloc(sizeof(char *) * get_nbr_shape(input) + 1);
-	while (input[i])
+	while (input[tab[0]])
 	{
-		j = 0;
-		k = 0;
-		side = get_side_shape(input[i]);
-		cpy[i] = (char *)ft_memalloc(sizeof(char) * (side - 1)\
+		tab[1] = 0;
+		tab[2] = 0;
+		side = get_side_shape(input[tab[0]]);
+		cpy[tab[0]] = (char *)ft_memalloc(sizeof(char) * (side - 1)\
 		* (side - 1) + 1);
-		while (input[i][j])
+		while (input[tab[0]][tab[1]])
 		{
-			if (j % side == clmn[i] - 1 || (j >= (side * (line[i] - 1)) &&\
-			j <= (side * line[i]) - 1))
-				j++;
+			if (tab[1] % side == clmn[tab[0]] - 1 || (tab[1] >= (side *\
+			(line[tab[0]] - 1)) && tab[1] <= (side * line[tab[0]]) - 1))
+				tab[1]++;
 			else
-				cpy[i][k++] = input[i][j++];
+				cpy[tab[0]][tab[2]++] = input[tab[0]][tab[1]++];
 		}
-		cpy[i++][k] = '\0';
+		cpy[tab[0]++][tab[2]] = '\0';
 	}
 	return (cpy);
 }
@@ -97,28 +95,27 @@ int			empty_line(char *shape)
 
 int			empty_clmn(char *shape)
 {
-	int		i;
-	int		j;
+	int		tab[2];
 	int		side;
 	int		empty;
 
-	i = 0;
-	j = 0;
+	tab[0] = 0;
+	tab[1] = 0;
 	empty = 0;
 	side = get_side_shape(shape);
-	while (shape[i + j] && i < side)
+	while (shape[tab[0] + tab[1]] && tab[0] < side)
 	{
-		if (shape[i + j] == '.')
+		if (shape[tab[0] + tab[1]] == '.')
 		{
-			j += side;
+			tab[1] += side;
 			empty++;
 			if (empty == side)
-				return (i + 1);
+				return (tab[0] + 1);
 		}
 		else
 		{
-			i++;
-			j = 0;
+			tab[0]++;
+			tab[1] = 0;
 			empty = 0;
 		}
 	}

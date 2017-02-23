@@ -13,10 +13,7 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <stdlib.h>
 # include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
 # include "libft/libft.h"
 
 # define BUFF_SIZE 1024
@@ -39,12 +36,15 @@ int					empty_line(char *shape);
 char				**side_red(char **input, int *line, int *clmn);
 
 void				do_map(char **input);
-char				*init_map(size_t size);
+char				*clear_map(size_t size);
+char				*init_map(char ***input, size_t nbr_hash);
 char				**put_id(char **shapes);
 char				*remove_id(char *shape);
 int					*init_start(size_t size);
 char				*remove_shape(char *map, int piece);
 char				*solve(char **input, char **dup, char *map, int *start);
+void				upper(char ***input, char ***dup, char **map);
+void				fall_back(char **map, int **start, int *piece);
 char				*insert_shape(char *shape, char *map, int start, int piece);
 
 int					get_side_shape(char *shape);

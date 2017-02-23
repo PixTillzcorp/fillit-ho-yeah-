@@ -1,4 +1,4 @@
-# **************************************************************************** # 
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,41 +6,49 @@
 #    By: heinfalt <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/28 17:30:28 by heinfalt          #+#    #+#              #
-#    Updated: 2016/11/28 17:30:29 by heinfalt         ###   ########.fr        #
+#    Updated: 2017/01/14 17:02:29 by pbeller          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: clean, fclean, re
+.PHONY: clean, fclean, re, all
 
 .SUFFIXES:
 
 NAME = fillit
 
-CC = gcc
+SRC 	= fillit.c \
+		checking.c \
+		display.c \
+		error.c \
+		index.c \
+		manip.c \
+		map.c \
+		read.c \
+		reduce.c \
+		remove_endl.c \
+		solve.c
 
-SRC =	map.c\
-		read.c\
-		index.c\
-		manip.c\
-		error.c\
-		reduce.c\
-		fillit.c\
-		display.c\
-		checking.c\
-		remove_endl.c\
-		libft/libft.a
+OBJ = $(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(NAME) fillit.h
+LIBFT = ./libft/libft.a
+LIBINC = -I ./libft
+LIBLINK = -L ./libft -lft
 
-$(NAME): $(SRC)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRC)
+all: $(NAME)
+
+$(NAME) :
+	make -C ./libft
+	gcc $(CFLAGS) -c $(LIBINC) $(SRC)
+	gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBINC) $(LIBFT)
 
 clean:
-	rm -f a.out
+	make -C ./libft clean
+	rm -rf $(OBJ)
 
 fclean: clean
+	make -C ./libft fclean
 	rm -f $(NAME)
 
 re: fclean all
